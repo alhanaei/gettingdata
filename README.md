@@ -92,7 +92,7 @@ untidy<-alldata[selectedcol]
 * use aggregate() to apply mean() to all columns (except grouping column 1 and 2)
 
 ```{r}
-tidy<-aggregate(x = untidy[-(1:2)], by = list(newdata$Subject,newdata$Activity), FUN = "mean")
+tidy<-aggregate(x = untidy[-(1:2)], by = list(untidy$Subject,untidy$Activity), FUN = "mean")
 ```
 
 ## saving the tidy data to a text file.
