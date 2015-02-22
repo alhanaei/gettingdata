@@ -10,13 +10,12 @@ output: html_document
 
 
 
-
 ##directory location for the data
 
 ```{r}
-directory1 <-"~/Coursera/UCI HAR/train"
-directory2 <-"~/Coursera/UCI HAR/test"
-directory3 <-"~/Coursera/UCI HAR"
+directory1 <-"./UCI HAR/train"
+directory2 <-"./UCI HAR/test"
+directory3 <-"./UCI HAR"
 ```
 
 ## read training data

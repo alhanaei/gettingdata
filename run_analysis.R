@@ -1,9 +1,36 @@
 
 library("plyr")
+
+
+temp <- tempfile("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", fileext=c("zip"))
+data <- read.table(unz(temp, "UCIHAR.dat"), nrows=10, header=T, quote="\"", sep=",")
+
+
+read.zip <- function(zipfile, row.names=NULL, dec=".") {
+  # Create a name for the dir where we'll unzip
+  zipdir <- tempfile()
+  # Create the dir using that name
+  dir.create(zipdir)
+  # Unzip the file into the dir
+  unzip(zipfile, exdir=zipdir)
+  # Get the files into the dir
+  files <- list.files(zipdir)
+  # Throw an error if there's more than one
+  if(length(files)>1) stop("More than one data file inside zip")
+  # Get the full name of the file
+  file <- paste(zipdir, files[1], sep="/")
+  # Read the file
+  read.csv(file, row.names, dec)
+}
+
+## setwd("C:/Users/aaalhanaee/Documents/DataScience/Coursera")
+
 ##directory location for the data
-directory1 <-"C:/Users/aaalhanaee/Documents/DataScience/Coursera/UCI HAR/train"
-directory2 <-"C:/Users/aaalhanaee/Documents/DataScience/Coursera/UCI HAR/test"
-directory3 <-"C:/Users/aaalhanaee/Documents/DataScience/Coursera/UCI HAR"
+directory1 <-"./UCI HAR/train"
+directory2 <-"./UCI HAR/test"
+directory3 <-"./UCI HAR"
+file.list <-list.files(path = directory2,full.names = TRUE,pattern = "*.txt")
+
 
 
 ## read training data
